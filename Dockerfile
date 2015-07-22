@@ -1,9 +1,9 @@
-FROM phusion/passenger-customizable:0.9.17
+FROM nginx
 MAINTAINER Graham Gilbert <graham@grahamgilbert.com>
 
-RUN mkdir -p /etc/my_init.d
-ADD run.sh /etc/my_init.d/run.sh
-CMD ["/sbin/my_init"]
+ADD run.sh /run.sh
+RUN chmod 755 /run.sh
+CMD ["/run.sh"]
 
 RUN rm -f /etc/service/nginx/down
 RUN rm -f /etc/nginx/sites-enabled/default
